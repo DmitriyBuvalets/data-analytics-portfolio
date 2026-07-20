@@ -9,7 +9,7 @@ import requests
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
-@functions_framework.http
+
 def update_exchange_rates():
     
     PROJECT_ID = "report"
@@ -76,14 +76,14 @@ def update_exchange_rates():
 
 
 if __name__ == "__main__":
-    print("🚀 Починаю міграцію...")
+    print("Починається міграція...")
 
     def run_job(func):
         """Обгортка для безпечного запуску кожної задачі з вимірюванням часу."""
         name = func.__name__
-        print(f"\n⚙️ Запуск: {name}()")
+        print(f"\n Запуск: {name}()")
 
-        start_time = time.time()  # ⏱️ старт
+        start_time = time.time()  # старт
 
         try:
             func()
@@ -94,5 +94,5 @@ if __name__ == "__main__":
             print(f"❌ Помилка у {name}() через {duration:.2f} с: {e}")
 
 
-    # === Послідовний запуск усіх задач ===
+    # === Запуск функції ===
     run_job(update_exchange_rates)
